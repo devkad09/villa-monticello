@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { MapPin, Navigation, ExternalLink, Plane, Compass, Layers } from 'lucide-react';
+import { MapPin, Navigation, ExternalLink, Plane, Layers } from 'lucide-react';
 import { hotelConfig } from '@/data/hotel';
 
 export function InteractiveMapSection() {

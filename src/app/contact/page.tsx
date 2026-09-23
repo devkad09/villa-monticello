@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Navbar } from '@/components/navigation/Navbar';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
@@ -11,11 +10,9 @@ import {
   MapPin,
   Phone,
   Mail,
-  Clock,
   Navigation,
   MessageCircle,
   ExternalLink,
-  ShieldCheck,
 } from 'lucide-react';
 
 export const metadata: Metadata = {

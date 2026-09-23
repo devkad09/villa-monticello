@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Clock, Utensils, Wine } from 'lucide-react';
+import { ArrowRight, Clock, Utensils } from 'lucide-react';
 import { brasserieData } from '@/data/dining';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';

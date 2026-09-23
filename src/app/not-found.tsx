@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Navbar } from '@/components/navigation/Navbar';
-import { Container } from '@/components/layout/Container';
-import { ArrowLeft, ArrowRight, BedSingle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function NotFound() {
   return (

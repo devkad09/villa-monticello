@@ -3,15 +3,10 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import {
-  ArrowLeft,
   ArrowRight,
-  Maximize2,
-  BedDouble,
   ShieldCheck,
   CalendarCheck,
-  Sparkles,
   Phone,
 } from 'lucide-react';
 import { Suite } from '@/types/suite';

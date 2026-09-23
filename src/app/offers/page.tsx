@@ -5,7 +5,7 @@ import { Navbar } from '@/components/navigation/Navbar';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { getActiveOffers, getArchivedOffers } from '@/data/offers';
-import { ArrowRight, Mail, Phone, CalendarCheck, Clock } from 'lucide-react';
+import { ArrowRight, Mail, Phone, Clock } from 'lucide-react';
 import { BackNavigation } from '@/components/navigation/BackNavigation';
 import { hotelInfo } from '@/data/hotel';
 

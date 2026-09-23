@@ -4,9 +4,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/components/layout/Container';
-import { ArrowRight, MessageCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
-import { hotelInfo } from '@/data/hotel';
 
 interface FinalConversionSectionProps {
   onOpenBooking?: () => void;

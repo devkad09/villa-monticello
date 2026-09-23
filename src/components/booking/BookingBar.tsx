@@ -29,17 +29,14 @@ export function BookingBar({ isSticky = false, className = '', defaultSuite }: B
     return d.toISOString().split('T')[0];
   };
 
-  const [checkIn, setCheckIn] = useState<string>('');
-  const [checkOut, setCheckOut] = useState<string>('');
+  const [checkIn, setCheckIn] = useState<string>(() => getTomorrowStr());
+  const [checkOut, setCheckOut] = useState<string>(() => getCheckoutStr());
   const [guests, setGuests] = useState<number>(2);
   const [error, setError] = useState<string>('');
   const [isMobileOpen, setIsMobileOpen] = useState<boolean>(false);
   const [hasScrolled, setHasScrolled] = useState<boolean>(false);
 
   useEffect(() => {
-    setCheckIn(getTomorrowStr());
-    setCheckOut(getCheckoutStr());
-
     const handleScroll = () => {
       if (window.scrollY > 400) {
         setHasScrolled(true);

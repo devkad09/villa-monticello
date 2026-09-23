@@ -1,12 +1,14 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://villamonticello.com').replace(/\/+$/, '');
+
   return {
     rules: {
       userAgent: '*',
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://villamonticello.com/sitemap.xml',
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

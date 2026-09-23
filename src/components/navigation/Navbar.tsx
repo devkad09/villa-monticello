@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { navigationItems, hotelInfo } from '@/data/hotel';
+import { navigationItems } from '@/data/hotel';
 import { Button } from '@/components/ui/Button';
 import { MobileMenu } from '@/components/navigation/MobileMenu';
 import { QuickBookingDrawer } from '@/components/booking/QuickBookingDrawer';

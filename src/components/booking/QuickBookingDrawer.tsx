@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Calendar, Users, BedDouble, ShieldCheck, ArrowRight, Phone } from 'lucide-react';
-import { hotelConfig, hotelInfo } from '@/data/hotel';
+import { hotelInfo } from '@/data/hotel';
 import { Button } from '@/components/ui/Button';
 import { trackEvent } from '@/lib/analytics';
 
@@ -16,23 +16,17 @@ export const QuickBookingDrawer: React.FC<QuickBookingDrawerProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
+  const [checkIn, setCheckIn] = useState(() => new Date().toISOString().split('T')[0]);
+  const [checkOut, setCheckOut] = useState(() => {
+    const future = new Date();
+    future.setDate(future.getDate() + 2);
+    return future.toISOString().split('T')[0];
+  });
   const [guests, setGuests] = useState('2');
   const [suiteCategory, setSuiteCategory] = useState('all');
 
   const drawerRef = useRef<HTMLElement>(null);
   const triggerElementRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    // Default checkIn to today, checkOut to 2 days later
-    const today = new Date();
-    const future = new Date(today);
-    future.setDate(future.getDate() + 2);
-
-    setCheckIn(today.toISOString().split('T')[0]);
-    setCheckOut(future.toISOString().split('T')[0]);
-  }, []);
 
   // Track triggering element to restore focus when drawer closes
   useEffect(() => {

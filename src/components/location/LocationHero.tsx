@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/layout/Container';
 import { BackNavigation } from '@/components/navigation/BackNavigation';

@@ -3,9 +3,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, ArrowRight, ShieldCheck, Phone, Mail } from 'lucide-react';
+import { Plus, Minus, Mail } from 'lucide-react';
 import { conciergeCategories } from '@/data/experiences';
-import { hotelInfo } from '@/data/hotel';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';

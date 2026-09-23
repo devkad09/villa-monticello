@@ -58,6 +58,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         success: true,
         status: 'dispatched',
+        type: inquiryType || 'general',
         message: `Your inquiry has been dispatched to ${recipientEmail}.`,
       });
     }
@@ -66,10 +67,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       status: 'provider_pending',
+      type: inquiryType || 'general',
       message:
         'Inquiry received and validated. Live email dispatch requires configuring CONTACT_EMAIL and EMAIL_API_KEY in your environment variables.',
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       {
         success: false,

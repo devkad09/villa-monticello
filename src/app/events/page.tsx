@@ -1,9 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowLeft, Users, CheckCircle2, ShieldCheck, Phone, Mail, Building2, Sparkles } from 'lucide-react';
+import { Users, Sparkles } from 'lucide-react';
 import { eventSpaces } from '@/data/events';
-import { hotelInfo } from '@/data/hotel';
 import { Navbar } from '@/components/navigation/Navbar';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';

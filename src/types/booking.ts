@@ -46,7 +46,18 @@ export interface Award {
   years: string[];
   category: string;
   description: string;
+  year?: number | string;
+  sourceUrl?: string;
+  sourceLabel?: string;
+  featured?: boolean;
+  honor?: string;
   badgeUrl?: string;
+}
+
+export interface YearAwardsGroup {
+  year: number | string;
+  headline?: string;
+  awards: Award[];
 }
 
 export interface RatingMetric {

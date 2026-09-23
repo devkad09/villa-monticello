@@ -57,7 +57,6 @@ export function trackEvent(eventName: AnalyticsEventType, params?: AnalyticsEven
 
   // Development logger for verification
   if (process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
     console.debug(`[Analytics Event: ${eventName}]`, eventPayload);
   }
 }

@@ -247,25 +247,90 @@ Configured in `next.config.ts`:
 
 ---
 
+## Analytics Configuration
+
+The application includes an event tracking abstraction in `src/lib/analytics.ts`:
+- **Supported Providers**: Google Analytics 4 (`gtag.js`), Plausible Analytics, and custom analytics telemetry.
+- **Conditional Loading**: In `src/app/layout.tsx`, Google Analytics script only loads when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is present in the environment (e.g. `G-XXXXXXXXXX`). If omitted, no tracking scripts are injected, ensuring zero fake IDs or unnecessary network overhead.
+- **Instrumented Conversion Events**:
+  - `start_booking` / `click_book_now` / `click_book_your_stay` / `click_check_availability`
+  - `view_suite` (captures suite name, slug, occupancy)
+  - `view_offer` / `click_offer`
+  - `submit_contact` / `submit_event_inquiry`
+  - `click_phone` (`tel:` links)
+  - `click_whatsapp` (direct concierge conversation triggers)
+  - `click_restaurant_reservation`
+
+---
+
+## Domain Configuration & SSL/DNS
+
+Villa Monticello's production domain is `villamonticello.com`:
+
+1. **DNS Settings**:
+   - `A` Record: `@` pointing to hosting provider IP (e.g., `76.76.21.21` for Vercel).
+   - `CNAME` Record: `www` pointing to `cname.vercel-dns.com` (or provider alias).
+2. **Canonical Domain**:
+   - Primary domain: `https://villamonticello.com`
+   - Secondary domain `https://www.villamonticello.com` redirects automatically (308/301) to canonical `https://villamonticello.com`.
+3. **SSL / HTTPS**:
+   - SSL certificates are provisioned automatically via Let's Encrypt / hosting edge.
+   - HSTS header `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` is enforced on all responses via `next.config.ts`.
+4. **Environment Setting**:
+   - Set `NEXT_PUBLIC_SITE_URL=https://villamonticello.com` in production environment variables.
+
+---
+
+## Maintenance Instructions
+
+### 1. Updating Suite Details & Rates
+All suite content, specs, bed types, and gallery photos are centralized in [`src/data/suites.ts`](file:///Users/kelvin/Desktop/villa-monticello/src/data/suites.ts). Modifying this single file automatically updates:
+- The `/suites` catalog and category filters.
+- All `/suites/[slug]` dynamic detail pages.
+- The booking gateway selector (`/book`).
+- The XML sitemap (`/sitemap.xml`).
+
+### 2. Updating Seasonal Offers & Packages
+Active and archived packages are managed in [`src/data/offers.ts`](file:///Users/kelvin/Desktop/villa-monticello/src/data/offers.ts).
+- Toggle `status: 'active' | 'archived'` or set `validUntil` expiration dates.
+- Expired or deactivated packages automatically move to past privileges, preventing active promotion of outdated rates.
+
+### 3. Dining & Brasserie Menus
+Menu highlights, hours of service, dress code, and reservation details are maintained in [`src/data/dining.ts`](file:///Users/kelvin/Desktop/villa-monticello/src/data/dining.ts) and [`src/data/hotel.ts`](file:///Users/kelvin/Desktop/villa-monticello/src/data/hotel.ts).
+
+### 4. Updating Hotel Contact Information
+Address, phone numbers, WhatsApp lines, email desks, and Google Maps links are centralized in [`src/data/hotel.ts`](file:///Users/kelvin/Desktop/villa-monticello/src/data/hotel.ts). Any updates there propagate instantly to headers, footers, drawers, schema markup, and contact pages.
+
+### 5. Dependency & Security Updates
+To audit and update project dependencies periodically:
+```bash
+npm audit
+npm run lint
+npm run build
+```
+
+---
+
 ## Production Deployment Guide
 
 ### Deploying to Vercel (Recommended)
-1. Push this repository to your GitHub/GitLab organization.
+1. Push this repository to GitHub (`devkad09/villa-monticello`).
 2. In the Vercel dashboard, click **Add New Project** and select the repository.
-3. Configure the environment variables in the Vercel Project Settings:
+3. Configure the environment variables in Vercel Project Settings:
    - `NEXT_PUBLIC_SITE_URL`: `https://villamonticello.com`
-   - `NEXT_PUBLIC_BOOKING_URL`: (Official Swiftbook URL)
+   - `NEXT_PUBLIC_BOOKING_URL`: `https://www.swiftbook.io/inst/#home?propertyId=981NSDALXuB4F3qmFWcpG0negCD6Dhrf0J3hmREz5isgargubu9SRTQ3MTQ=&JDRN=Y`
    - `NEXT_PUBLIC_WHATSAPP_NUMBER`: `233557216752`
+   - `NEXT_PUBLIC_GOOGLE_MAPS_URL`: `https://www.google.com/maps/place/Villa+Monticello+Boutique+Hotel/@5.6037,-0.187,17z`
    - `CONTACT_EMAIL`: `reservations@villamonticello.com`
-   - `EMAIL_API_KEY`: (Your Resend or SendGrid API key)
+   - `EMAIL_API_KEY`: (Resend, SendGrid, or SMTP credentials)
 4. Click **Deploy**. Vercel will run `npm run build` and provision edge caching.
 
-### Deploying via Docker / Node.js
-1. Build the production image:
+### Deploying via Node.js Server / VM
+1. Build the production application:
    ```bash
    npm run build
    ```
-2. Start the production server on port 3000:
+2. Start the production server on port 3000 (or custom port via `PORT` variable):
    ```bash
    NODE_ENV=production npm run start
    ```

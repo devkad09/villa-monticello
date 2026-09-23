@@ -2,19 +2,12 @@
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight, Compass } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { experienceStories } from '@/data/experiences';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 
-interface ExperienceStoriesProps {
-  onSelectStory?: (id: string) => void;
-}
-
-export const ExperienceStories: React.FC<ExperienceStoriesProps> = ({
-  onSelectStory,
-}) => {
+export const ExperienceStories: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -72,7 +65,7 @@ export const ExperienceStories: React.FC<ExperienceStoriesProps> = ({
           ref={scrollContainerRef}
           className="mt-10 sm:mt-12 flex items-stretch gap-6 sm:gap-8 overflow-x-auto no-scrollbar scroll-smooth -mx-6 px-6 sm:-mx-8 sm:px-8 md:-mx-12 md:px-12 lg:-mx-16 lg:px-16 pb-4"
         >
-          {experienceStories.map((story, idx) => (
+          {experienceStories.map((story) => (
             <div
               key={story.id}
               className="flex-none w-[300px] sm:w-[380px] lg:w-[440px] flex flex-col group select-none"

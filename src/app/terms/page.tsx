@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 import { Navbar } from '@/components/navigation/Navbar';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';

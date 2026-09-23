@@ -3,8 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRight, Users, Sparkles, Building2 } from 'lucide-react';
-import { eventSpaces } from '@/data/events';
+import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { Button } from '@/components/ui/Button';

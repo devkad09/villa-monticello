@@ -1,9 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowLeft, Clock, MapPin, Phone, Mail, Wine, Utensils, ShieldCheck } from 'lucide-react';
+import { MapPin, Phone, Mail, Utensils } from 'lucide-react';
 import { brasserieData } from '@/data/dining';
-import { hotelInfo } from '@/data/hotel';
 import { Navbar } from '@/components/navigation/Navbar';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';

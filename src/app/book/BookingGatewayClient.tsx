@@ -1,14 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { hotelInfo } from '@/data/hotel';
 import { getAllSuites, getSuiteBySlug } from '@/data/suites';
-import { Calendar, Users, ArrowRight, ShieldCheck, Check, Sparkles, Phone, Mail, ExternalLink } from 'lucide-react';
+import { Calendar, Users, ShieldCheck, Check, Sparkles, Phone, Mail, ExternalLink } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 import { Suite } from '@/types/suite';
 
@@ -37,18 +36,7 @@ export function BookingGatewayClient() {
   const [checkOut, setCheckOut] = useState<string>(checkOutParam || getCheckoutStr());
   const [guests, setGuests] = useState<number>(guestsParam ? parseInt(guestsParam, 10) : 2);
   const [allSuites] = useState<Suite[]>(getAllSuites());
-  const [selectedSuite, setSelectedSuite] = useState<Suite | undefined>(
-    suiteParam ? getSuiteBySlug(suiteParam) : undefined
-  );
-
-  useEffect(() => {
-    if (selectedSuiteSlug) {
-      const found = getSuiteBySlug(selectedSuiteSlug);
-      setSelectedSuite(found);
-    } else {
-      setSelectedSuite(undefined);
-    }
-  }, [selectedSuiteSlug]);
+  const selectedSuite = selectedSuiteSlug ? getSuiteBySlug(selectedSuiteSlug) : undefined;
 
   const handleSuiteChange = (slug: string) => {
     setSelectedSuiteSlug(slug);

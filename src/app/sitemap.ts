@@ -3,7 +3,7 @@ import { getAllSuites } from '@/data/suites';
 import { getAllOffers } from '@/data/offers';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://villamonticello.com';
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://villamonticello.com').replace(/\/+$/, '');
   const currentDate = new Date().toISOString();
 
   // Core static marketing and booking routes
@@ -58,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/contact`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/awards`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,

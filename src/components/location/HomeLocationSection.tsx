@@ -5,8 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
-import { MapPin, Navigation, ExternalLink, ArrowRight, Plane, Building2 } from 'lucide-react';
-import { hotelInfo } from '@/data/hotel';
+import { ArrowRight } from 'lucide-react';
 
 export function HomeLocationSection() {
   const directionsUrl =

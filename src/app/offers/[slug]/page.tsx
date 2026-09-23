@@ -7,7 +7,7 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { getAllOffers, getOfferBySlug } from '@/data/offers';
 import { hotelInfo } from '@/data/hotel';
-import { ArrowRight, CheckCircle2, ShieldAlert, Sparkles, Phone, Mail, Calendar } from 'lucide-react';
+import { ArrowRight, ShieldAlert, Sparkles, Phone, Mail } from 'lucide-react';
 import { BackNavigation } from '@/components/navigation/BackNavigation';
 
 interface OfferDetailPageProps {
